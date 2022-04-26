@@ -1,0 +1,17 @@
+
+.separator {
+	border: 1px solid #000000;
+	transform: rotate(90deg);
+}
+
+.left {
+	float: left;
+	/* background-color: azure; */
+	width: 40vw;
+	border-right: 1px solid #000000  ;
+}
+.right {
+	float: right;
+	/* background-colocdr: aqua; */
+	width: 60vw;
+}

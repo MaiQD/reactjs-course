@@ -1,0 +1,14 @@
+.dropdown {
+	/* action */
+
+	background: #f66a56;
+	border-radius: 4px;
+	color: white;
+	padding: 5px;
+	border: 0px;
+	justify-content: right;
+	cursor: pointer;
+	align-items: center;
+	justify-items: center;
+	text-align: center;
+}
