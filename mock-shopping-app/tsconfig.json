@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "src", // all paths are relative to the baseUrl
+    "rootDir": "src",
+    "paths": {
+      //"~/*": ["*"], // resolve any `~/foo/bar` to `<baseUrl>/foo/bar`,
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
