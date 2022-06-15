@@ -1,32 +1,27 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import ProductCard from "pages/HomePage/Products/ProductCard";
-import { Box, styled } from "@mui/material";
-import products from "assets/data/product";
+import { Box, CircularProgress, styled } from "@mui/material";
 import { productsContext } from "app/contexts/products";
-import _isEmpty from "lodash/isEmpty";
 const Container = styled(Box)`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 `;
-
+const Spinner = styled(CircularProgress)`
+	margin: 10rem auto;
+`
 function ProductList() {
-	const { fetchProducts, productsLoading, productsFiltered, filterProducts } = useContext(productsContext);
-	useEffect(() => {
-		(async () => {
-			if (_isEmpty(productsFiltered) && !productsLoading) {
-				// debugger;
-				await fetchProducts();
-			}
-		})()
-	}, []);
+	const { productsLoading, productsFiltered } = useContext(productsContext);
 	return (
 		<Container>
-			{productsFiltered &&
-				!productsLoading &&
+			{!productsLoading ? (
 				productsFiltered.map((item) => (
 					<ProductCard product={item} key={item.id} />
-				))}
+				))
+			) : (
+				<Spinner />
+			)}
+			
 		</Container>
 	);
 }

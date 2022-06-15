@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import withAuth from "app/HOC/withAuth";
 import Header from "app/layout/Header";
 import { Box, styled } from "@mui/material";
 import ProductList from "pages/HomePage/Products/ProductList";
-import ProductsContextProvider from "app/contexts/products";
+import ProductsContextProvider, {
+	productsContext,
+} from "app/contexts/products";
+import _isEmpty from "lodash/isEmpty";
+import ProductFilter from "./Products/ProductFilter";
 
 const Container = styled(Box)`
 	display: flex;
@@ -39,17 +43,33 @@ const ProductListContainer = styled(Box)`
 	}
 `;
 function HomePage() {
+	const { fetchProducts, productsLoading, productsFiltered} =
+		useContext(productsContext);
+	useEffect(() => {
+		(async () => {
+			if (_isEmpty(productsFiltered) && !productsLoading) {
+				await fetchProducts();
+			}
+		})();
+	}, []);
 	return (
 		<Container>
 			<Header />
 			<ProductWrapper>
-				<ProductFilterContainer>this is product filter</ProductFilterContainer>
+				{/* <ProductFilterContainer>this is product filter</ProductFilterContainer> */}
 				<ProductListContainer>
+					<ProductFilter />
 					<ProductList />
 				</ProductListContainer>
 			</ProductWrapper>
 		</Container>
 	);
 }
-
-export default withAuth(HomePage);
+export const HomeWrapper = () => {
+	return (
+		<ProductsContextProvider>
+			<HomePage />
+		</ProductsContextProvider>
+	);
+};
+export default withAuth(HomeWrapper);

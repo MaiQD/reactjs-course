@@ -74,7 +74,6 @@ function LoginPage() {
 
 	const handleSignIn = async (values: Input) => {
 		const user = await signIn(values.username, values.password);
-		debugger;
 		if (user) {
 			setSignInMessage("");
 			navigate("../home", { replace: true });

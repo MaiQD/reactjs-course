@@ -7,3 +7,9 @@ export interface Product {
 	categoryId: number;
 	createdAt: Date,
 }
+
+export interface ProductFilter {
+	sortBy: string;
+	keyword?: string;
+	categoryId?: number;
+}

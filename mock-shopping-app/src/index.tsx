@@ -14,9 +14,7 @@ root.render(
 	// <React.StrictMode>
 		<BrowserRouter>
 			<GlobalContextProvider>
-				<ProductsContextProvider>
 					<App />
-				</ProductsContextProvider>
 			</GlobalContextProvider>
 		</BrowserRouter>
 	// </React.StrictMode>

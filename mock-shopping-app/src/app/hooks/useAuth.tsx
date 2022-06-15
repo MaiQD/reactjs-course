@@ -45,7 +45,6 @@ export default function useAuth(): IUserContext {
 	};
 
 	const signUp = async (username: string, password: string) => {
-		debugger
 		const list = await agent.Users.list(new URLSearchParams());
 		const data:User = { ...sample, username, password };
 		const _ = await agent.Users.create(data);

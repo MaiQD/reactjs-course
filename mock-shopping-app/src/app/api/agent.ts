@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import User from "app/models/user";
 import { Product } from "app/models/products";
+import Category from "app/models/categories";
 
 axios.defaults.baseURL = "https://629195c79d159855f07d4183.mockapi.io/api/v1";
 
@@ -30,9 +31,19 @@ const Products = {
 		requests.put<void>(`/products/${product.id}`, product),
 	delete: (id: string) => requests.del<void>(`/products/${id}`),
 };
+const Categories = {
+	list: (params: URLSearchParams) =>
+		axios.get<Category[]>("/categories", { params }).then(responseBody),
+	details: (id: string) => requests.get<Category>(`/categories/${id}`),
+	create: (category: Category) => requests.post<void>("/categories", category),
+	update: (category: Category) =>
+		requests.put<void>(`/categories/${category.id}`, category),
+	delete: (id: string) => requests.del<void>(`/categories/${id}`),
+};
 const agent = {
 	Users,
 	Products,
+	Categories
 };
 
 export default agent;

@@ -18,7 +18,7 @@ import { productsContext } from "app/contexts/products";
 
 function Header() {
 	const { user, signOut } = useContext(globalContext);
-	const { filterProducts } = useContext(productsContext);
+	const { filterProducts, filterCondition } = useContext(productsContext);
 	const navigate = useNavigate();
 	const [searchValue, setSearchValue] = useState("");
 
@@ -31,9 +31,9 @@ function Header() {
 	};
 	const handleSearching = useCallback(
 		_debounce((value) => {
-			filterProducts(value);
+			filterProducts(value, filterCondition.sortBy, filterCondition.categoryId);
 		}, 300),
-		[]
+		[filterCondition.sortBy, filterCondition.categoryId]
 	);
 
 	const handleTyping = (e: ChangeEvent<HTMLInputElement>) => {
