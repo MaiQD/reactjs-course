@@ -8,13 +8,17 @@ export interface ICartContext {
 	addProductToCart: (product: Product, number?: number) => void;
 	clearCart: () => void;
 	removeProductFromCart: (productId: number) => void;
+	updateDirectNumberProduct: (productId: number, number: number) => void;
+	initDataCart: () => void;
 }
 
 const initCartContextValue: ICartContext = {
 	cart: [],
 	addProductToCart: () => {},
 	clearCart: () => {},
-	removeProductFromCart: () => {}
+	removeProductFromCart: () => {},
+	updateDirectNumberProduct: () => {},
+	initDataCart: () => {},
 };
 
 export const cartContext = createContext(initCartContextValue);
@@ -46,7 +50,10 @@ function CartContextProvider({ children }: { children: React.ReactNode }) {
 				if (cartItem.length > 0) {
 					for (var i in pre) {
 						if (pre[i].productId === product.id) {
-							pre[i].quantity += number;
+							const newQuatity = pre[i].quantity + number;
+							if (newQuatity < 10) {
+								pre[i].quantity += number;
+							}
 							break;
 						}
 					}
@@ -60,6 +67,23 @@ function CartContextProvider({ children }: { children: React.ReactNode }) {
 				return nextCart;
 			});
 		}
+	};
+	const updateDirectNumberProduct = (productId: number, number: number) => {
+		setCart((pre) => {
+			if (pre.length === 0) return [];
+			var items = pre.filter((p) => p.productId === productId);
+			if (items.length > 0) {
+				for (var i in pre) {
+					if (pre[i].productId === productId) {
+						pre[i].quantity = number;
+						break;
+					}
+				}
+			}
+			const nextCart = [...pre];
+			saveToLocalStorage(nextCart);
+			return nextCart;
+		});
 	};
 	const removeProductFromCart = (productId: number) => {
 		setCart((pre) => {
@@ -85,9 +109,6 @@ function CartContextProvider({ children }: { children: React.ReactNode }) {
 		setCart([]);
 		saveToLocalStorage([]);
 	};
-	useEffect(() => {
-		initDataCart();
-	}, []);
 
 	return (
 		<cartContext.Provider
@@ -95,7 +116,9 @@ function CartContextProvider({ children }: { children: React.ReactNode }) {
 				cart,
 				addProductToCart,
 				clearCart,
-				removeProductFromCart
+				removeProductFromCart,
+				updateDirectNumberProduct,
+				initDataCart,
 			}}
 		>
 			{children}
