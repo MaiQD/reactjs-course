@@ -13,9 +13,9 @@ const CartWrapper = styled(Box)`
 	display: flex;
 
 	min-width: 100vw;
-	margin: 0 auto;
 	flex-direction: column;
 	@media only screen and (min-width: 1200px) {
+		margin: 0 auto;
 		flex-direction: row;
 		min-width: 1200px;
 		width: 1200px;

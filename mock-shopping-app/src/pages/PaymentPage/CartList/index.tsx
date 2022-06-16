@@ -11,6 +11,7 @@ const SubmitContainer = styled(Box)`
 	display: flex;
 	justify-content: flex-end;
 	margin-right: 20px;
+	margin-top: 1rem;
 `;
 const SubmitButton = styled(Button)`
 	background-color: ${primaryColorMain};

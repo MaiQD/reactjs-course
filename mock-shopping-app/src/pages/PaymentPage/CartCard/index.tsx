@@ -21,6 +21,10 @@ const CartItemWrapper = styled(Box)`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-direction: column;
+	@media only screen and (min-width: 1200px) {
+		flex-direction: row;
+	}
 `;
 const CartItemImage = styled("img")`
 	width: 80px;
