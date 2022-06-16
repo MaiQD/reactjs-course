@@ -1,35 +1,15 @@
-import { Box, MenuItem, Select, styled, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import agent from "app/api/agent";
 import { productsContext } from "app/contexts/products";
 import Category from "app/models/categories";
 import React, { useContext, useEffect } from "react";
+import { Container, InputWrapper } from "./styles";
 
-const Container = styled(Box)`
-	font-weight: 400;
-	background: rgba(0, 0, 0, 0.03);
-	padding: 0.8125rem 1.25rem;
-	border-radius: 2px;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	@media screen and (min-width: 1200px) {
-		justify-content: flex-end;
-	}
-`;
-const InputWrapper = styled(Box)`
-	display: flex;
-	align-items: center;
-	margin-left: 1rem;
-	flex-direction: column;
-	@media screen and (min-width: 1200px) {
-		flex-direction: row;
-	}
-`;
 function ProductFilter() {
 	const [sortBy, setSortBy] = React.useState("A");
-	const [category, setCategory] = React.useState<number | undefined>(
-		0
-	);
+	const [category, setCategory] = React.useState<number | undefined>(0);
 	const [categories, setCatagories] = React.useState<Category[]>([]);
 	const { filterProducts, filterCondition } = useContext(productsContext);
 

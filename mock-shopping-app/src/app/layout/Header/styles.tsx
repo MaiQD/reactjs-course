@@ -27,7 +27,6 @@ export const HeaderWithSearchWrapper = styled(Box)`
 	box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
 	margin-right: auto;
 	margin-left: auto;
-	width: 100vw;
 	padding-bottom: 1rem;
 	// for medium and up
 	@media only screen and (min-width: 992px) {
@@ -52,6 +51,7 @@ export const HeaderLogo = styled(Box)`
 	padding-right: 2.5rem;
 	align-items: center;
 	text-align: center;
+	cursor: pointer;
 `;
 export const HeaderSearch = styled(Box)`
 	align-items: center;

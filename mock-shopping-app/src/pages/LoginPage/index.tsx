@@ -12,26 +12,12 @@ import Container from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import backgroundImage from "assets/images/wallpaperflare-cropped.jpg";
 import React, { useContext, useMemo, useState } from "react";
 import { globalContext } from "app/contexts/global";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
+import { CustomBox, LoginBox } from "./styles";
 
-const CustomBox = styled(Box)`
-	background-image: url(${backgroundImage});
-	background-size: cover;
-	height: 100vh;
-	width: 100vw;
-`;
-const LoginBox = styled(Box)`
-	padding: 4rem 2rem 4rem 2rem;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: rgb(253, 253, 253);
-`;
 
 type Input = typeof initialValues;
 
@@ -106,6 +92,7 @@ function LoginPage() {
 			setMode("signIn");
 		}
 	};
+
 	return (
 		<CustomBox>
 			<Container

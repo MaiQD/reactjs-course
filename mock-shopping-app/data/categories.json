@@ -1,0 +1,62 @@
+[
+	{
+	 "createdAt": "2022-06-15T01:26:19.148Z",
+	 "name": "Beauty",
+	 "id": "1"
+	},
+	{
+	 "createdAt": "2022-06-14T20:20:43.364Z",
+	 "name": "Electronics",
+	 "id": "2"
+	},
+	{
+	 "createdAt": "2022-06-14T17:02:57.385Z",
+	 "name": "Books",
+	 "id": "3"
+	},
+	{
+	 "createdAt": "2022-06-15T01:48:37.301Z",
+	 "name": "Movies",
+	 "id": "4"
+	},
+	{
+	 "createdAt": "2022-06-14T13:56:09.718Z",
+	 "name": "Home",
+	 "id": "5"
+	},
+	{
+	 "createdAt": "2022-06-14T12:43:43.067Z",
+	 "name": "Movies",
+	 "id": "6"
+	},
+	{
+	 "createdAt": "2022-06-14T18:49:12.551Z",
+	 "name": "Baby",
+	 "id": "7"
+	},
+	{
+	 "createdAt": "2022-06-14T07:36:35.037Z",
+	 "name": "Shoes",
+	 "id": "8"
+	},
+	{
+	 "createdAt": "2022-06-14T19:17:40.312Z",
+	 "name": "Home",
+	 "id": "9"
+	},
+	{
+	 "createdAt": "2022-06-14T21:29:31.257Z",
+	 "name": "Automotive",
+	 "id": "10"
+	},
+	{
+	 "createdAt": "2022-06-14T12:50:58.165Z",
+	 "name": "Beauty",
+	 "id": "11"
+	},
+	{
+	 "createdAt": "2022-06-14T14:39:03.753Z",
+	 "name": "Music",
+	 "id": "12"
+	}
+ ]

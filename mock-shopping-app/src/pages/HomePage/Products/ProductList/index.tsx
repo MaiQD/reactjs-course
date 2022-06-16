@@ -1,15 +1,8 @@
 import React, { useContext } from "react";
 import ProductCard from "pages/HomePage/Products/ProductCard";
-import { Box, CircularProgress, styled } from "@mui/material";
 import { productsContext } from "app/contexts/products";
-const Container = styled(Box)`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-`;
-const Spinner = styled(CircularProgress)`
-	margin: 10rem auto;
-`
+import { Container, Spinner } from "./styles";
+
 function ProductList() {
 	const { productsLoading, productsFiltered } = useContext(productsContext);
 	return (
@@ -21,7 +14,6 @@ function ProductList() {
 			) : (
 				<Spinner />
 			)}
-			
 		</Container>
 	);
 }

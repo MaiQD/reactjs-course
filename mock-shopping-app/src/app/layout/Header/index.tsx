@@ -15,8 +15,11 @@ import {
 	HeaderCart,
 } from "./styles";
 import { productsContext } from "app/contexts/products";
+interface IProps {
+	isShowSearchBox: boolean;
+}
 
-function Header() {
+function Header({ isShowSearchBox }: IProps) {
 	const { user, signOut } = useContext(globalContext);
 	const { filterProducts, filterCondition } = useContext(productsContext);
 	const navigate = useNavigate();
@@ -41,18 +44,20 @@ function Header() {
 		setSearchValue(value);
 		handleSearching(value);
 	};
-
+	const onClickLogo = () => {
+		navigate("/home");
+	};
 	return (
 		<Container>
 			<NavBar>
 				<Typography>Hello {user?.name}</Typography>
-				<Button onClick={LogOutHandler} sx={{ color: "white" }}>
+				<Button onClick={LogOutHandler} sx={{ color: "white", textTransform:"none" }}>
 					Log out
 				</Button>
 			</NavBar>
 			<HeaderWithSearchWrapper>
 				<HeaderWithSearchContainer>
-					<HeaderLogo>
+					<HeaderLogo onClick={onClickLogo}>
 						<Typography
 							variant="h4"
 							component="h1"
@@ -64,22 +69,24 @@ function Header() {
 						</Typography>
 					</HeaderLogo>
 					<HeaderSearch>
-						<TextField
-							sx={{
-								width: "100%",
-								backgroundColor: "white",
-								borderRadius: "0.25rem",
-							}}
-							placeholder="Search"
-							onChange={handleTyping}
-							InputProps={{
-								startAdornment: (
-									<InputAdornment position="start">
-										<SearchIcon />
-									</InputAdornment>
-								),
-							}}
-						/>
+						{isShowSearchBox && (
+							<TextField
+								sx={{
+									width: "100%",
+									backgroundColor: "white",
+									borderRadius: "0.25rem",
+								}}
+								placeholder="Search"
+								onChange={handleTyping}
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position="start">
+											<SearchIcon />
+										</InputAdornment>
+									),
+								}}
+							/>
+						)}
 					</HeaderSearch>
 					<HeaderCart>
 						<Button onClick={GoToCart} sx={{ color: "white" }}>
